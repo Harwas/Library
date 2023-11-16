@@ -1,4 +1,4 @@
-package com.mycompany.perpustakaan;
+package library;
 
 
 import java.sql.*;
