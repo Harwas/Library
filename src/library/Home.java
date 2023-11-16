@@ -39,6 +39,11 @@ public class Home extends javax.swing.JFrame {
 
         jButton1.setText("New Students");
         jButton1.setPreferredSize(new java.awt.Dimension(159, 59));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("New Book");
         jButton2.setPreferredSize(new java.awt.Dimension(159, 59));
@@ -53,6 +58,11 @@ public class Home extends javax.swing.JFrame {
 
         jButton4.setText("Issue Book");
         jButton4.setPreferredSize(new java.awt.Dimension(159, 59));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Return Book");
         jButton5.setPreferredSize(new java.awt.Dimension(159, 59));
@@ -109,6 +119,16 @@ public class Home extends javax.swing.JFrame {
     // TODO add your handling code:
     new LoginPage().setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new newStudents().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new IssueBook().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
