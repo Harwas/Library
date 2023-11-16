@@ -4,6 +4,11 @@
  */
 package library;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import Project.ConnectionProvider;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Asus
@@ -115,7 +120,37 @@ public class newStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String ID = jTextField1.getText();
+        String name = jTextField2.getText();
+        String matkul = (String) jComboBox1.getSelectedItem();
+        String prodi = (String) jComboBox2.getSelectedItem();
+
+        try (Connection con = ConnectionProvider.getCon();
+             PreparedStatement pst = con.prepareStatement("INSERT INTO student VALUES(?, ?, ?, ?)")) {
+
+            pst.setString(1, ID);
+            pst.setString(2, name);
+            pst.setString(3, matkul);
+            pst.setString(4, prodi);
+
+            int rowsAffected = pst.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Successfully inserted");
+                setVisible(false);
+                new newStudents().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Insertion failed");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unexpected error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

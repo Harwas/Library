@@ -3,11 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Project;
-
+import java.sql.*;
 /**
  *
  * @author Asus
  */
 public class ConnectionProvider {
-    
+    public static Connection getCon() {
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root", "roy");
+        return con;
+    } catch (Exception e) {
+        e.printStackTrace(); // Print the exception stack trace
+        return null;
+    }
+}
+
 }
