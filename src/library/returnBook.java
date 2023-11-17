@@ -5,6 +5,8 @@
 package library;
 import java.sql.*;
 import Project.ConnectionProvider;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -140,8 +142,8 @@ public class returnBook extends javax.swing.JFrame {
         String studentID=jTextField2.getText();
         try
         {
-            Connection con=ConnectionProvider.getCon();
-            Statement st=con.createStatement();
+            ConnectionProvider con=ConnectionProvider.getInstance();
+            Connection st=con.getConnection();
             ResultSet rs=st.executeQuery("selct *from issue where bookID='"+bookID+"' and studentID='"+studentID+"'");
             if(rs.next())
             {
